@@ -1,15 +1,21 @@
 if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to normipaiva.";
-  };
 
-  Template.hello.events({
-    'click input': function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
+  var happinessValues = ["Very unhappy", "Somewhat unhappy", "Neutral", 
+    "Somewhat happy", "Very happy"];
+
+  Template.page.rendered = function (){
+    $( "#slider" ).slider({
+      value:2,
+      min: 0,
+      max: 4,
+      step: 1,
+      animate: true,
+      slide: function( event, ui ) {
+        $( "#happiness" ).val(happinessValues[ui.value] );
+      }
+    });
+    $( "#happiness" ).val(happinessValues[$( "#slider" ).slider( "value" )]);
+  }
 }
 
 if (Meteor.isServer) {
