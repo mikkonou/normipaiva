@@ -12,5 +12,8 @@ Template.personBox.helpers({
   },
   level: function () {
     return this.contentmentLevel
+  },
+  lastUpdated: function () {
+    return this.updated.toString()
   }
 })

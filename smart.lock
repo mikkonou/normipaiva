@@ -3,7 +3,9 @@
   "dependencies": {
     "basePackages": {
       "jqueryui": {},
-      "glyphicons-halflings": {}
+      "glyphicons-halflings": {},
+      "moment": {},
+      "livestamp": {}
     },
     "packages": {
       "jqueryui": {
@@ -15,6 +17,16 @@
         "git": "https://github.com/chriswessels/meteor-glyphicons-halflings.git",
         "tag": "v1.0.2",
         "commit": "c943b42cddb92be8218322e7d638a98ef5d10366"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.8.1",
+        "commit": "722ea63783d594341023836b7d418ab2567dab8c"
+      },
+      "livestamp": {
+        "git": "https://github.com/colllin/meteor-livestamp.git",
+        "tag": "v1.1.2-3",
+        "commit": "d161b9de53d7032511ecaa13486b6b5cb11f71f3"
       },
       "build-fetcher": {
         "git": "https://github.com/mizzao/meteor-build-fetcher.git",

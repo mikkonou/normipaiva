@@ -1,6 +1,8 @@
 {
   "packages": {
     "jqueryui": {},
-    "glyphicons-halflings": {}
+    "glyphicons-halflings": {},
+    "moment": {},
+    "livestamp": {}
   }
 }
