@@ -1,8 +1,12 @@
 <template name="personBox">
   <div class="summary-box contentment-{{level}}">
-    <div class="">
-      <h4><span class="summary-box-name">{{name}}</span><span class="{{workAmountGlyph}}"></span></h4>
-      <span>Updated <span data-livestamp="{{lastUpdated}}"></span></span>
+    <div>
+      <span class="lead">
+        <span class="summary-box-name">{{name}}</span>
+        <span class="{{workAmountGlyph}}"></span>
+      </span>
+      <p class="working-on">{{workingOn}}</p>
+      <span><small>Updated <span data-livestamp="{{lastUpdated}}"></span></small></span>
     </div>
   </div>
 </template>

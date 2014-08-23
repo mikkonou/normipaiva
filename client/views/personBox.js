@@ -15,5 +15,8 @@ Template.personBox.helpers({
   },
   lastUpdated: function () {
     return this.updated.toString()
+  },
+  workingOn: function () {
+    return this.workingOn
   }
 })

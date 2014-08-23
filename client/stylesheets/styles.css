@@ -16,12 +16,15 @@ body {
 .summary-box {
     float: left;
     border-radius: 3px;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     margin: 5px 5px 5px 0px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 .summary-box-name {
-    margin-right: 5px;
+    margin-right: 0px;
+}
+.working-on {
+    margin: 0px;
 }
 .contentment-high {
     background: #9e9;
