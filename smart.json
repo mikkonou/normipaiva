@@ -3,6 +3,9 @@
     "jqueryui": {},
     "glyphicons-halflings": {},
     "moment": {},
-    "livestamp": {}
+    "livestamp": {},
+    "accounts-ui-bootstrap-dropdown": {},
+    "iron-router": {},
+    "spin": {}
   }
 }
