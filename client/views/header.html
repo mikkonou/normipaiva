@@ -6,8 +6,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="{{pathFor 'workload'}}">Normipäivä</a>
+      <a class="brand" href="{{pathFor 'summary'}}">Normipäivä</a>
       <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="{{pathFor 'userDetails'}}">Details</a></li>
+        </ul>
         <ul class="nav pull-right">
           <li>{{> loginButtons}}</li>
         </ul>
