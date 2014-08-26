@@ -14,7 +14,7 @@ Template.personBox.helpers({
     return this.contentmentLevel
   },
   lastUpdated: function () {
-    return this.updated.toString()
+    return (this.updated / 1000).toString()
   },
   workingOn: function () {
     return this.workingOn

@@ -1,11 +1,11 @@
-var users = [
+var userFixtures = [
   {
     username: 'janne',
     name: 'Janne Henriksson',
     contentmentLevel: 'low',
     workAmount: 'more',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e1)
+    updated: (new Date().getTime()) - 10e9
   },
   {
     username: 'mikko',
@@ -13,7 +13,7 @@ var users = [
     contentmentLevel: 'high',
     workAmount: 'more',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e2)
+    updated: (new Date().getTime()) - 10e7
   },
   {
     username: 'jussi',
@@ -21,7 +21,7 @@ var users = [
     contentmentLevel: 'average',
     workAmount: 'same',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e3)
+    updated: (new Date().getTime()) - 10e8
   },
   {
     username: 'kikka',
@@ -29,7 +29,7 @@ var users = [
     contentmentLevel: 'low',
     workAmount: 'same',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e4)
+    updated: (new Date().getTime()) - (10e6 + 10e4)
   },
   {
     username: 'risto',
@@ -37,7 +37,7 @@ var users = [
     contentmentLevel: 'high',
     workAmount: 'less',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e5)
+    updated: (new Date().getTime()) - 10e5
   },
   {
     username: 'simo',
@@ -45,7 +45,7 @@ var users = [
     contentmentLevel: 'average',
     workAmount: 'less',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e6)
+    updated: (new Date().getTime()) - 10e6
   },
   {
     username: 'ari',
@@ -53,7 +53,7 @@ var users = [
     contentmentLevel: 'low',
     workAmount: 'less',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e5)
+    updated: (new Date().getTime()) - (Math.random() * 10e5)
   },
   {
     username: 'matti',
@@ -61,7 +61,7 @@ var users = [
     contentmentLevel: 'high',
     workAmount: 'same',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e4)
+    updated: (new Date().getTime()) - (Math.random() * 10e4)
   },
   {
     username: 'mauno',
@@ -69,7 +69,7 @@ var users = [
     contentmentLevel: 'average',
     workAmount: 'more',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e3)
+    updated: (new Date().getTime()) - (Math.random() * 10e3)
   },
   {
     username: 'timo',
@@ -77,23 +77,27 @@ var users = [
     contentmentLevel: 'high',
     workAmount: 'more',
     workingOn: 'KobraTK',
-    updated: (new Date().getTime() / 1000) - (Math.random() * 10e2)
+    updated: (new Date().getTime()) - (Math.random() * 10e2)
   }
 ];
 
 if (Meteor.users.find().count() === 0) {
-  users.forEach( function(user) {
-    var userId = Accounts.createUser({
-      username: user.username,
+  userFixtures.forEach( function(userFixture) {
+    var newUserId = Accounts.createUser({
+      username: userFixture.username,
       password: 'asdfasdf',
     });
-    People.insert({
-      id: userId,
-      name: user.name,
-      contentmentLevel: user.contentmentLevel,
-      workAmount: user.workAmount,
-      workingOn: user.workingOn,
-      updated: user.updated
-    })
+    People.update({userId: newUserId},
+      { $set:
+        {
+          userId: newUserId,
+          name: userFixture.name,
+          contentmentLevel: userFixture.contentmentLevel,
+          workAmount: userFixture.workAmount,
+          workingOn: userFixture.workingOn,
+          updated: userFixture.updated
+        }
+      }
+    );
   })
 }

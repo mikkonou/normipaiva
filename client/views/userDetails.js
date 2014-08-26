@@ -8,9 +8,7 @@ Template.userDetails.events({
       newWorkingOn: $(e.target).find('[name=workingOnInput]').val()
     }
 
-    var person = People.findOne({id: Meteor.user()._id});
-    
-    console.log("person: " + person);
+    var person = People.findOne({userId: Meteor.user()._id});
 
     People.update( {_id: person._id}, 
       { $set: 
@@ -18,7 +16,7 @@ Template.userDetails.events({
           contentmentLevel: details.newContentmentLevel,
           workAmount: details.newWorkAmount,
           workingOn: details.newWorkingOn,
-          updated: (new Date().getTime() / 1000)
+          updated: new Date().getTime()
         }
       }
     );
