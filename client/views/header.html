@@ -1,21 +1,24 @@
 <template name="header">
-  <header class="navbar">
-    <div class="navbar-inner">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header>
+    <div class="ui menu">
+      <a class="item" href="{{pathFor 'summary'}}">
+        <i class="home icon"></i> Normipäivä
       </a>
-      <a class="brand" href="{{pathFor 'summary'}}">Normipäivä</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          {{#if currentUser}}
-          <li><a href="{{pathFor 'userDetails'}}">Details</a></li>
-          {{/if}}
-        </ul>
-        <ul class="nav pull-right">
-          <li>{{> loginButtons}}</li>
-        </ul>
+      {{#if currentUser}}
+      <a class="item" href="{{pathFor 'userDetails'}}">
+        <i class="user icon"></i> Details
+      </a>
+      {{/if}}
+      <div class="right menu">
+        {{#if currentUser}}
+        <a class="item">
+          <i class="sign out icon"></i> Sign Out
+        </a>
+        {{else}}
+        <a class="item" href="{{pathFor 'logInRegister'}}">
+          <i class="sign in icon"></i> Sign In / Register
+        </a>
+        {{/if}}
       </div>
     </div>
   </header>

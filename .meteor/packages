@@ -10,7 +10,6 @@ accounts-password
 mrt:moment@2.8.1
 sacha:spin@2.0.4
 iron:router
-mizzao:jquery-ui
 mrt:livestamp-hs
-mizzao:bootstrap-3
-ian:accounts-ui-bootstrap-3
+nooitaf:semantic-ui
+

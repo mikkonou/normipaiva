@@ -1,13 +1,13 @@
 Template.personBox.helpers({
     workAmountGlyph: function () {
     if (this.workAmount == 'more') {
-      return 'glyphicon glyphicon-arrow-up';
+      return 'up icon';
     }
     else if (this.workAmount == 'same') {
-      return 'glyphicon glyphicon-ok';
+      return 'checkmark icon';
     }
     else if (this.workAmount == 'less') {
-      return 'glyphicon glyphicon-arrow-down';
+      return 'down icon';
     }
   },
   level: function () {

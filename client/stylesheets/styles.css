@@ -1,13 +1,9 @@
-.grid-block, .main {
-    background: #fff;
-    border-radius: 3px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-}
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
 body {
     background: #eee;
     color: #666666;
+    font-family: 'Open Sans', sans-serif;
 }
 .navbar { margin: 10px 0 10px 0 }
 .navbar .navbar-inner {
@@ -16,8 +12,8 @@ body {
 .summary-box {
     float: left;
     border-radius: 3px;
-    padding: 5px 5px 5px 10px;
-    margin: 0px 5px 5px 0px;
+    padding: 5px 10px 5px 10px;
+    margin: 5px 5px 0px 0px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 .summary-box-name {
@@ -33,5 +29,5 @@ body {
     background: #e99;
 }
 .contentment-average {
-    background: #fff;
+    background: #ed6;
 }
