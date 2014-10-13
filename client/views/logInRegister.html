@@ -1,42 +1,46 @@
 <template name="logInRegister">  
   <div class="ui two column grid">
     <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">Log-in</h3>
-        <div class="field">
-          <label>Username</label>
-          <input placeholder="Username" type="text">
+      <form id="register-form">
+        <div class="ui fluid form segment">
+          <h3 class="ui header">Register</h3>
+          <div class="two fields">
+            <div class="field">
+              <label>First Name</label>
+              <input placeholder="First Name" type="text">
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input placeholder="Last Name" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label>Username</label>
+            <input placeholder="Username" type="text">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password">
+          </div>
+          <div class="ui blue submit button">Submit</div>
         </div>
-        <div class="field">
-          <label>Password</label>
-          <input type="password">
-        </div>
-        <div class="ui blue submit button">Login</div>
-      </div>
+      </form>
     </div>
     <div class="column">
-      <div class="ui fluid form segment">
-        <h3 class="ui header">Register</h3>
-        <div class="two fields">
+      <form id="login-form">
+        <div class="ui fluid form segment">
+          <h3 class="ui header">Sign in</h3>
           <div class="field">
-            <label>First Name</label>
-            <input placeholder="First Name" type="text">
+            <label>Username</label>
+            <input id="login-username" placeholder="Username" type="text">
           </div>
           <div class="field">
-            <label>Last Name</label>
-            <input placeholder="Last Name" type="text">
+            <label>Password</label>
+            <input id="login-password" type="password">
           </div>
+          <input type="submit" value="Submit" class="ui blue submit button" />
         </div>
-        <div class="field">
-          <label>Username</label>
-          <input placeholder="Username" type="text">
-        </div>
-        <div class="field">
-          <label>Password</label>
-          <input type="password">
-        </div>
-        <div class="ui blue submit button">Submit</div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
