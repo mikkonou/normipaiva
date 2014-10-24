@@ -1,26 +1,31 @@
 Template.userDetails.events({
-  'submit form': function(e) {
+  'submit form': function(e, t) {
     e.preventDefault();
 
-    var details = {
-      newWorkAmount: $(e.target).find('[name=workAmountInput]').val(),
-      newContentmentLevel: $(e.target).find('[name=contentmentLevelInput]').val(),
-      newWorkingOn: $(e.target).find('[name=workingOnInput]').val()
-    }
+    var _userId           = Meteor.userId()
+      , _contentmentLevel = $('.ui.rating').rating('get rating')
+      , _workAmount       = $('.ui.button.active').val()
+      , _workingOn        = t.find('#name-of-project').value
+      , _timestamp        = new Date().getTime();
 
-    var person = People.findOne({userId: Meteor.user()._id});
-
-    People.update( {_id: person._id}, 
-      { $set: 
-        {
-          contentmentLevel: details.newContentmentLevel,
-          workAmount: details.newWorkAmount,
-          workingOn: details.newWorkingOn,
-          updated: new Date().getTime()
-        }
-      }
-    );
+    Entries.insert({
+      userId: _userId,
+      contentmentLevel: _contentmentLevel,
+      workAmount: _workAmount,
+      workingOn: _workingOn,
+      timestamp: _timestamp
+    });
 
     Router.go('summary');
   }
 });
+
+Template.userDetails.rendered = function () {
+  $('.ui.rating').rating('enable');
+  $('.ui.rating').rating('set rating', '5');
+  
+  $('.ui.button').click( function () {
+    $('.ui.button').removeClass('active');
+    $(this).addClass('active');
+  });
+}

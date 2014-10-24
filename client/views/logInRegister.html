@@ -1,35 +1,41 @@
 <template name="logInRegister">  
   <div class="ui two column grid">
     <div class="column">
-      <form id="register-form">
-        <div class="ui fluid form segment">
+      <div class="ui fluid form segment {{showRegistrationFailedNotice}}">
+        <form id="register-form">
           <h3 class="ui header">Register</h3>
+          <div class="ui warning message">
+            <p>{{registrationFailedErrorMessage}}</p>
+          </div>
           <div class="two fields">
             <div class="field">
               <label>First Name</label>
-              <input placeholder="First Name" type="text">
+              <input id="register-firstname" placeholder="First Name" type="text">
             </div>
             <div class="field">
               <label>Last Name</label>
-              <input placeholder="Last Name" type="text">
+              <input id="register-lastname" placeholder="Last Name" type="text">
             </div>
           </div>
           <div class="field">
             <label>Username</label>
-            <input placeholder="Username" type="text">
+            <input id="register-username" placeholder="Username" type="text">
           </div>
           <div class="field">
             <label>Password</label>
-            <input type="password">
+            <input id="register-password" type="password">
           </div>
-          <div class="ui blue submit button">Submit</div>
-        </div>
-      </form>
+          <input type="submit" value="Submit" class="ui blue submit button" />
+        </form>
+      </div>
     </div>
     <div class="column">
       <form id="login-form">
-        <div class="ui fluid form segment">
+        <div class="ui fluid form segment {{showLoginFailedNotice}}">
           <h3 class="ui header">Sign in</h3>
+          <div class="ui warning message">
+            <p>Please check your username and password.</p>
+          </div>
           <div class="field">
             <label>Username</label>
             <input id="login-username" placeholder="Username" type="text">

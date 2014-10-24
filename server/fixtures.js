@@ -1,103 +1,83 @@
 var userFixtures = [
   {
     username: 'janne',
-    name: 'Janne Henriksson',
-    contentmentLevel: 'low',
-    workAmount: 'more',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - 10e9
+    firstName: 'Janne',
+    lastName: 'Henriksson',
   },
   {
     username: 'mikko',
-    name: 'Mikko Taavitsa',
-    contentmentLevel: 'high',
-    workAmount: 'more',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - 10e7
+    firstName: 'Mikko',
+    lastName: 'Taavitsa',
   },
   {
     username: 'jussi',
-    name: 'Jussi Pattitussi',
-    contentmentLevel: 'average',
-    workAmount: 'same',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - 10e8
+    firstName: 'Jussi',
+    lastName: 'Pattitussi',
   },
   {
     username: 'kikka',
-    name: 'Kikka Korea',
-    contentmentLevel: 'low',
-    workAmount: 'same',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - (10e6 + 10e4)
+    firstName: 'Kikka',
+    lastName: 'Korea',
   },
   {
     username: 'risto',
-    name: 'Risto Autere',
-    contentmentLevel: 'high',
-    workAmount: 'less',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - 10e5
+    firstName: 'Risto', 
+    lastName: 'Autere',
   },
   {
     username: 'simo',
-    name: 'Simo Kuassimo',
-    contentmentLevel: 'average',
-    workAmount: 'less',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - 10e6
+    firstName: 'Simo',
+    lastName: 'Kuassimo',
   },
   {
     username: 'ari',
-    name: 'Ari Zwang',
-    contentmentLevel: 'low',
-    workAmount: 'less',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - (Math.random() * 10e5)
+    firstName: 'Ari',
+    lastName: 'Zwang',
   },
   {
     username: 'matti',
-    name: 'Matti Näsä',
-    contentmentLevel: 'high',
-    workAmount: 'same',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - (Math.random() * 10e4)
+    firstName: 'Matti',
+    lastName: 'Näsä',
   },
   {
     username: 'mauno',
-    name: 'Mauno Ahonen',
-    contentmentLevel: 'average',
-    workAmount: 'more',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - (Math.random() * 10e3)
+    firstName: 'Mauno',
+    lastName: 'Ahonen',
   },
   {
     username: 'timo',
-    name: 'Timo Silakka',
-    contentmentLevel: 'high',
-    workAmount: 'more',
-    workingOn: 'KobraTK',
-    updated: (new Date().getTime()) - (Math.random() * 10e2)
+    firstName: 'Timo',
+    lastName: 'Silakka',
   }
 ];
+
+var contentmentValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var workAmountValues  = [1, 2, 3];
+var workingOnValues   = ['Saumaton Oy', 
+                         'Jankon Betoni', 
+                         'Foobar/Quux integration']
 
 if (Meteor.users.find().count() === 0) {
   userFixtures.forEach( function(userFixture) {
     var newUserId = Accounts.createUser({
       username: userFixture.username,
       password: 'asdfasdf',
-    });
-    People.update({userId: newUserId},
-      { $set:
-        {
-          userId: newUserId,
-          name: userFixture.name,
-          contentmentLevel: userFixture.contentmentLevel,
-          workAmount: userFixture.workAmount,
-          workingOn: userFixture.workingOn,
-          updated: userFixture.updated
-        }
+      profile: {
+        first_name: userFixture.firstName,
+        last_name: userFixture.lastName
       }
-    );
+    });
+    People.insert({
+      userId: newUserId,
+      first_name: userFixture.firstName,
+      last_name: userFixture.lastName
+    });
+    Entries.insert({
+      userId: newUserId,
+      contentmentLevel: contentmentValues[Math.floor(Math.random() * 9)],
+      workAmount: workAmountValues[Math.floor(Math.random() * 3)],
+      workingOn: workingOnValues[Math.floor(Math.random() * 3)],
+      timestamp: (new Date().getTime()) - (Math.random() * Math.pow(10, (Math.floor(Math.random() * 9) + 1)))
+    });
   })
 }
